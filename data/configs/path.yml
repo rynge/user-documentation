@@ -19,6 +19,8 @@ nav:
       - "GPUs": htc_workloads/specific_resources/gpus.md
       - "Large Memory": htc_workloads/specific_resources/large-memory.md
       - "Multicore": htc_workloads/specific_resources/multicore.md
+    - Software:
+      - "Using conda to Run Python on the OSPool": software_tools/local_installation/conda-environments.md
     - Containers:
       - "Containers - Overview": htc_workloads/containers/containers.md
       - "Containers - Apptainer/Singularity": htc_workloads/containers/containers-singularity.md
@@ -26,4 +28,3 @@ nav:
       - "Containers - Predefined List": htc_workloads/containers/available-containers-list.md
     - Automated Workflows:
       - "Submit Workflows with HTCondor's DAGMan ": htc_workloads/automated_workflows/dagman-workflows.md
-
