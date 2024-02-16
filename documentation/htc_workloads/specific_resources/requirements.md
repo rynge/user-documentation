@@ -1,10 +1,12 @@
 ---
 ospool:
-  path: htc_workloads/using_software/requirements.md
+  path: htc_workloads/specific_resource/requirements.md
 ---
 
 Control Where Your Jobs Run / Job Requirements 
 ====================================
+
+[TOC]
 
 By default, your jobs will match any available slot in the OSG. This is fine
 for very generic jobs. However, in some cases a job may have one or more system
@@ -24,7 +26,7 @@ which to run your jobs.
 Lastly, there are some custom attributes you can add to your submit file to
 either focus on, or avoid, certain execution sites.
 
-# Requirements
+## Requirements
 
 The `requirements` attribute is formatted as an expression, so you can use logical
 operators to combine multiple requirements where `&&` is used for AND and
@@ -54,7 +56,7 @@ Then the `requirements` would be:
 
     requirements = HAS_oasis_opensciencegrid_org == True
 
-## AVX (segfault / illegal instruction) and Other Hardware Attributes
+### AVX (segfault / illegal instruction) and Other Hardware Attributes
 
 A common problem in distributed computing infrastructures is a mismatch between
 the executable and the hardware. On OSG, this can happen if you compile a code
@@ -74,7 +76,7 @@ or
     requirements = HAS_AVX2 == True
 
 
-## x86\_64 Micro Architechture Levels
+### x86\_64 Micro Architechture Levels
 
 The x86\_64 set of CPUs contains a large number of different CPUs with 
 different capabilities. Instead of trying to match on on individual attributes
@@ -89,7 +91,7 @@ running on the two highest levels is:
     requirements = (Microarch == "x86_64-v3" || Microarch == "x86_64-v4")
 
 
-## Additional Feature-Specific Attributes
+### Additional Feature-Specific Attributes
 
 There are many attributes that you can use with `requirements`. To see what values
 you can specify for a given attribute you can run the following command while
@@ -130,7 +132,33 @@ Below is a list of common attributes that you can include in your submit file `r
 - **GPUs_Capability** - For GPU jobs, specifies the GPUs' compute capability.
   See our [GPU guide](../../../htc_workloads/specific_resource/gpu-jobs/) for more details.
 
-# Specifying Sites / Avoiding Sites
+
+### Non-x86 Based Architechtures
+
+Within the computing community, there's a growing interest in exploring
+non-x86 architectures, such as ARM and PowerPC. As of now, the OSPool
+does not host resources based on these architectures; however, it
+is designed to accommodate them once available. The OSPool operates
+under a system where all tasks are configured to execute on the
+same architecture as the host from which they were submitted. This
+compatibility is ensured by HTCondor, which automatically adds the
+appropriate architecture to the job's requirements. By inspecting the
+classad of any given job, one would notice the inclusion of
+`(TARGET.Arch == "X86_64")` among its requirements, indicating the
+system's current architectural preference.
+
+If you do wish to specify a different architechure, just add it to
+your job requirements:
+
+    requirements = Arch == "PPC"
+
+You can get a list of current architechures by running:
+
+    $ condor_status -af Arch | sort | uniq
+    X86_64
+
+
+## Specifying Sites / Avoiding Sites
 
 To run your jobs on a list of specific execution sites, or avoid a set of 
 sites, use the `+DESIRED_Sites`/`+UNDESIRED_Sites` attributes in your job
