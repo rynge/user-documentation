@@ -37,3 +37,6 @@
 [submodule "documentation/tutorials/tutorial-pytorch-catdog"]
 	path = documentation/tutorials/tutorial-pytorch-catdog
 	url = https://github.com/osg-htc/tutorial-pytorch-catdog.git
+[submodule "documentation/tutorials/tutorial-sleap"]
+	path = documentation/tutorials/tutorial-sleap
+	url = https://github.com/osg-htc/tutorial-sleap.git
