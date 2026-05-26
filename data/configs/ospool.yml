@@ -74,7 +74,7 @@ nav:
       - "Basics of compiled MATLAB applications - Hello World example": software_examples/matlab_runtime/tutorial-matlab-HelloWorld/README.md
       - "Run Python Scripts on the OSPool ": software_examples/python/manage-python-packages.md
       - "Run R scripts on the OSPool": software_examples/r/tutorial-R/README.md
-      - "SLEAP - Social LEAP Estimates Animal Poses": tutorials/tutorial-sleap/README.md
+      - "SLEAP - Social LEAP Estimates Animal Poses": software_examples/ai/tutorial-sleap/README.md
       - "Use External Packages in your R Jobs": software_examples/r/tutorial-R-addlibSNA/README.md
       - "Using Julia on the OSPool ": software_examples/other_languages_tools/julia-on-osg.md
       - "Using Java in Jobs ": software_examples/other_languages_tools/java-on-osg.md
